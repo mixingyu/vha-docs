@@ -1,6 +1,5 @@
 <template>
   <div class="index_PG-Getting-Started">
-<!-- ------------------------------------------- -->
 <section id="documentationgetting_started">
 
 <h1><a href="#documentationgetting_started">Getting Started</a></h1>

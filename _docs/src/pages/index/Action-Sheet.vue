@@ -1,5 +1,6 @@
 <template>
   <div class="index_PG-Action-Sheet">
+<!-- ------------------------------------------- -->
 <section id="Action-Sheet">
 
 <h1><a href="#Action-Sheet">Action Sheet</a></h1>
@@ -13,8 +14,6 @@
 <p><router-link to="/aaa">2222</router-link></p>
 </blockquote>
 <p class="ui-r-note _bdc-66cc00">You’ll succeed if you do this.</p>
-
-
 
 <p>Parameters</p>
 <dl>

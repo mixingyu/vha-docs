@@ -16,14 +16,14 @@ module.exports = {
     plugins: [
       new PrerenderSPAPlugin({
         staticDir: path.join(__dirname, '..') + '\\docs',
-        routes: [ 
+        routes: [ /// {{{
           '/', 
           '/Getting-Started', 
           '/Authentication', 
           '/Errors'
-        ],
+        ], /// }}}
         postProcessHtml: function (context) {
-          var titles = {
+          var titles = {// 在这里配置每个页面的标题
             '/': 'vha-native docs',
             '/aaa': 'Our Story'
           }

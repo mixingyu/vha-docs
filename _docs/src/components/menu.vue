@@ -70,7 +70,9 @@ export default {
     //父组件参数
     pData: {
       type: Array,
-      default: []
+      default:  function () {
+        return []
+      }
     },
     getContainer: {
       type: Function,
@@ -92,9 +94,9 @@ export default {
   },
   methods: {
     //方法 - 进入页面创建
-    onItemshow: function (menusIndex, listIndex) {
-      // this.menus[menusIndex].list[listIndex].showItem = !this.menus[menusIndex].list[listIndex].showItem
-    },
+    // onItemshow: function (menusIndex, listIndex) {
+    //   this.menus[menusIndex].list[listIndex].showItem = !this.menus[menusIndex].list[listIndex].showItem
+    // },
     procURL: function (url) {
       return this.$router.history.base + url
     },
