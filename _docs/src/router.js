@@ -15,18 +15,21 @@ export default new Router({
     { 
       path: '/',
       component: index,
-      redirect: '/Getting-Started',
+      redirect: '/GettingStarted',
       children: [
         {
-          path: '/Getting-Started',
+          path: '/GettingStarted',
+          name: 'GettingStarted',
           component: GettingStarted
         },
         {
           path: '/Authentication',
+          name: 'Authentication',
           component: Authentication
         },
         {
           path: '/Errors',
+          name: 'Errors',
           component: Errors
         }
       ]

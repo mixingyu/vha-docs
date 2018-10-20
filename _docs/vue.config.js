@@ -18,7 +18,7 @@ module.exports = {
         staticDir: path.join(__dirname, '..') + '\\docs',
         routes: [
           '/', 
-          '/Getting-Started', 
+          '/GettingStarted', 
           '/Authentication', 
           '/Errors'
         ],
