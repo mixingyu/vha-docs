@@ -7,13 +7,13 @@
     font-size 1rem
     font-weight 700
     letter-spacing 1px
-    color #888
+    color #666
   li
     a
       @extend ._clear-a
-      padding 4px 26px
+      padding 4px 28px
       display block
-      font-size 1.1em
+      font-size 1em
       color #777 !important
       // border-left 5px solid transparent
       &:hover
@@ -126,7 +126,7 @@ export default {
       })
       
       window.history.replaceState({}, null, '#' + this.nowElement.id)
-      window.document.title = this.nowElement.id
+      // window.document.title = this.nowElement.id
     },
     handleScroll: function () {
       // 滚动处理

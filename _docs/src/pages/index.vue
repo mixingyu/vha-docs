@@ -52,12 +52,14 @@
   ._UI-content
     // padding 40px
     // background-color white
+    .ui-r-a
+      font-size .8em
+      color #1890ff !important
+      &:hover
+        text-decoration underline
+    
     #lastSection
       font-size 14px
-      a
-        color #1890ff !important
-        &:hover
-          text-decoration underline
       span
         color #aaa
     .ui-r-npm
@@ -70,6 +72,19 @@
       background url('../assets/images/npm.png') no-repeat 6px center
       &:hover
         color #474a54 !important
+        
+    .ui-r-return
+      padding-left 10px
+      font-size 0.8em
+      color #999
+      span
+        color #1890ff
+    
+    ul
+      padding 10px 30px
+      li
+        list-style-type disc
+    
     blockquote
       padding 10px
       border 0px
@@ -77,16 +92,25 @@
       box-shadow 0 0 0 1px #eee
       p
         margin 0
+    
     section
-      padding 30px 50px
+      padding 25px 40px
       width 100%
-      font-size 1.2em
+      font-size 1.1em
       color #474a54
       border-top 1px solid lineCl
       &:first-child
         border none
+      ._cl-aaaaaa
+        font-style italic
       h1, h2, h3, h4, h5, h6
         margin-bottom 30px
+        strong
+          a
+            &:after
+              content '#'
+              margin-left 6px
+              color #1890ff
       a
         @extend ._clear-a
         color #474a54 !important
@@ -105,13 +129,17 @@
       pre
         padding 0
         margin 0
+        border 1px solid #eee
+        border-radius 8px
+        // box-shadow 0 1px 6px rgba(0,0,0,0.15)
         code
           padding 15px
           border-radius 8px
           white-space pre-wrap
           font-size 16px
           letter-spacing .1px
-          background-color #282c34
+          // background-color #282c34
+      
       dl
         border-top 1px solid #eee
         border-bottom 1px solid #eee
@@ -135,9 +163,6 @@
             height 0
           +dd
             margin-top 0
-            
-
-        
         
       .ui-r-note
         border-left 5px solid #aaa
@@ -146,6 +171,8 @@
         margin-right -15px
         background-color #FAFAFA
         border-radius 2px
+      ._bdc-info
+        font-weight bold
 
 </style>
 －－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－
@@ -161,7 +188,7 @@
         <input class="_reInput" placeholder="Search" />
       </div>
       <div class="ui-l-menu _flexYauto">
-        <UImenu :pData="menus" :getContainer="getContainer" :getContainerNode="getContainerNode"></UImenu>
+        <UImenu :pData="$store.state.menus" :getContainer="getContainer" :getContainerNode="getContainerNode"></UImenu>
         <!-- 
         <section>
           <p class="ui-l-i-title">Documentation</p>
@@ -222,136 +249,12 @@
 <script type="text/ecmascript-6">
 import UImenu from "../components/menu";
 import hljs from "highlight.js";
-import "highlight.js/styles/atom-one-dark.css";
+import "highlight.js/styles/atom-one-light.css";
 export default {
   name: 'PGindex',
   data() {
     //动态数据
     return {
-      menus: [
-        {
-          title: 'Documentation',
-          list: [
-            {
-              text: 'Getting Started',
-              note: '',
-              noteClass: '',
-              href: '/Getting-Started',
-              select: false,
-              showItem: false,
-              item: [
-                {
-                  subText: '启动屏幕',
-                  subNote: 'Splashscreen',
-                  noteClass: '',
-                  href: '#documentationgetting_started',
-                  select: false
-                },
-                {
-                  subText: '状态栏',
-                  subNote: 'StatusBar',
-                  noteClass: '',
-                  href: '#documentationauthentication',
-                  select: false
-                },
-                {
-                  subText: '网络状态',
-                  subNote: 'Network',
-                  noteClass: '',
-                  href: '#documentationerrors',
-                  select: false
-                }
-              ]
-            },
-            {
-              text: 'Authentication',
-              note: '',
-              noteClass: '',
-              href: '/Authentication',
-              select: false,
-              showItem: false,
-              item: [
-                {
-                  subText: '启动屏幕',
-                  subNote: 'Splashscreen',
-                  noteClass: '',
-                  href: '#documentationgetting_started',
-                  select: true
-                },
-                {
-                  subText: '状态栏',
-                  subNote: 'StatusBar',
-                  noteClass: '',
-                  href: '#documentationauthentication',
-                  select: false
-                },
-                {
-                  subText: '网络状态',
-                  subNote: 'Network',
-                  noteClass: '',
-                  href: '#documentationerrors',
-                  select: false
-                }
-              ]
-            },
-            {
-              text: 'Errors',
-              note: '',
-              noteClass: '',
-              href: '/Errors',
-              select: false,
-              showItem: false,
-              item: [
-              ]
-            }
-          ]
-        },
-        {
-          title: 'Apis',
-          list: [
-            {
-              text: '/books',
-              note: 'POST',
-              noteClass: '_cl-66bb6a',
-              href: '#',
-              select: false,
-              showItem: false,
-              item: [
-              ]
-            },
-            {
-              text: '/books',
-              note: 'POST',
-              noteClass: '_cl-42a5f5',
-              href: '#',
-              select: false,
-              showItem: false,
-              item: [
-              ]
-            },
-            {
-              text: '/books/:id',
-              note: 'PUT',
-              noteClass: '_cl-7e57c2',
-              href: '#',
-              select: false,
-              showItem: false,
-              item: [
-              ]
-            },
-            {
-              text: '/books/:id',
-              note: 'DELETE',
-              noteClass: '_cl-ff7043',
-              href: '#',
-              select: false,
-              showItem: false,
-              item: [
-              ]
-            }
-          ]
-        }
-      ]
     }
   },
   components: {
@@ -376,6 +279,7 @@ export default {
         return str.substring(temp_for, temp_back)
       }
       
+      // 更换主题色
       temp_styles.forEach(element => {
         if (element.innerHTML.indexOf(`/*Tstart-`) != -1) {
           let temp_string = getStrMid(element.innerHTML, `/*Tstart-${name}*/`, `/*Tend-${name}*/`)
@@ -387,9 +291,9 @@ export default {
   },
   watch: {
     //观察 - 数据或方法变动
-    'this.$router': function () {
-      console.log(this.$router)
-    }
+    // 'this.$router': function () {
+    //   console.log(this.$router)
+    // }
   },
   created() {
     //实例创建完成后
@@ -429,6 +333,23 @@ export default {
         // hljs.configure({languages: ['javascript']})
         hljs.highlightBlock(block)
         // hljs.registerLanguage('javascript', javascript);
+      })
+    })
+    
+    // 使h1里的a链接带有动画
+    let temp_h1a = document.querySelectorAll('._PG-index ._UI-content h1 strong a')
+    temp_h1a.forEach(el => {
+      el.addEventListener('click', (event) => {
+        this.$scrollTo(document.querySelector('._PG-index ._UI-content ' + event.target.hash))
+        event.preventDefault()
+      })
+    })
+    // 使h2里的a链接带有动画
+    let temp_h2a = document.querySelectorAll('._PG-index ._UI-content h2 strong a')
+    temp_h2a.forEach(el => {
+      el.addEventListener('click', (event) => {
+        this.$scrollTo(document.querySelector('._PG-index ._UI-content ' + event.target.hash))
+        event.preventDefault()
       })
     })
     

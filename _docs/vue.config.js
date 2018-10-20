@@ -16,20 +16,26 @@ module.exports = {
     plugins: [
       new PrerenderSPAPlugin({
         staticDir: path.join(__dirname, '..') + '\\docs',
-        routes: [ /// {{{
+        routes: [
           '/', 
           '/Getting-Started', 
           '/Authentication', 
           '/Errors'
-        ], /// }}}
+        ],
         postProcessHtml: function (context) {
-          var titles = {// 在这里配置每个页面的标题
+          // 在这里配置每个页面的标题
+          var titles = {
             '/': 'vha-native docs',
-            '/aaa': 'Our Story'
+            '/Authentication': 'Authentication',
+            '/Errors': 'Errors'
+          }
+          let temp_title = titles[context.route]
+          if (!temp_title) {
+            temp_title = context.route.replace(/\//g, '').replace(/-/g, ' ') + ' 静态文档博客'
           }
           return context.html.replace(
             /<title>[^<]*<\/title>/i,
-            '<title>' + titles[context.route] + '</title>'
+            '<title>' + temp_title + '</title>'
           )
         }
       })
