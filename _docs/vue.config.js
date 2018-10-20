@@ -25,9 +25,7 @@ module.exports = {
         postProcessHtml: function (context) {
           // 在这里配置每个页面的标题
           var titles = {
-            '/': 'vha-native docs',
-            '/Authentication': 'Authentication',
-            '/Errors': 'Errors'
+            '/': 'vha-docs'
           }
           let temp_title = titles[context.route]
           if (!temp_title) {
