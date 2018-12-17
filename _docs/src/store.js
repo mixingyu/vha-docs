@@ -22,6 +22,9 @@ Vue.mixin({
 
 export default new Vuex.Store({
   state: {
+    showSidebar: true, 
+    showSideOutrouter: 'GettingStarted,Authentication', 
+    showSidebarSrc: 'https://neostudiogroup.github.io/vha-appDemo/', 
     menus: [
       {
         title: 'Documentation',

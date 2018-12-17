@@ -26,4 +26,4 @@ npm run docs:build
 npm run build
 ```
 
-<!-- style by [tangerine](https://tangerine-lemon.cloudvent.net/) -->
+Style by [tangerine](https://tangerine-lemon.cloudvent.net/)

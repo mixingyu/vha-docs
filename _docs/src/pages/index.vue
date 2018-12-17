@@ -12,7 +12,7 @@
   ._UI-menu
     width 240px
     border-right 1px solid lineCl
-    background-color #fbfbfb
+    background-color #fefefe
     .ui-l-title
       cursor pointer
       padding 0 20px
@@ -111,15 +111,16 @@
               content '#'
               margin-left 6px
               color #1890ff
-      a
-        @extend ._clear-a
-        color #474a54 !important
+      h1
+        a
+          @extend ._clear-a
+          color #474a54 !important
       table
         border 1px solid #E1E1E1
         margin 0 0 20px 0
         border-collapse collapse
         td, th
-          border 1px solid #ccc
+          border 1px solid #ddd
           padding 10px
           font-size .9em
           text-align left
@@ -128,7 +129,6 @@
 
       pre
         padding 0
-        margin 0
         border 1px solid #eee
         border-radius 8px
         // box-shadow 0 1px 6px rgba(0,0,0,0.15)
@@ -171,8 +171,27 @@
         margin-right -15px
         background-color #FAFAFA
         border-radius 2px
-      ._bdc-info
         font-weight bold
+  
+  //UI组件-侧边栏
+  ._UI-sidebar
+    padding 20px
+    border-left 1px solid #eee
+    .ui-s-phone
+      padding 90px 12px
+      height 100%
+      font-size 0
+      background-image url('../assets/images/phone-case.png')
+      background-repeat no-repeat
+      background-size 100%
+      .ui-s-p-if
+        border-radius 6px
+        overflow hidden
+        transform translateY(0px) 
+      iframe
+        width 375px
+        height 667px
+        transition all 0s
 
 </style>
 －－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－
@@ -242,6 +261,12 @@
     <!-- UI组件-右侧内容 -->
     <div class="_UI-content _flexYauto">
       <router-view></router-view>
+    </div>
+    <!-- UI组件-侧边栏 -->
+    <div class="_UI-sidebar" v-if="$store.state.showSidebar">
+      <div class="ui-s-phone">
+        <iframe :src="iframeSrc" frameborder="0"></iframe>
+      </div>
     </div>
   </div>
 </template>
@@ -352,6 +377,21 @@ export default {
         event.preventDefault()
       })
     })
+    
+    //自适应侧边栏iframe src
+    if (this.$store.state.showSidebar) {
+      // 分割被去除的路由组
+      let temp_outRouter = this.$store.state.showSideOutrouter.split(",")
+      temp_outRouter.forEach(element => {
+        let temp_path = this.$router.history.current.path.replace(/\//g,'')
+        // 如果在被去除的路由组找到当前路径名,就不显示
+        if (element === temp_path) {
+          this.$store.state.showSidebar = false
+        }
+      })
+    // this.iframeSrc = this.$store.state.showSidebarSrc
+      this.iframeSrc += this.$store.state.showSidebarSrc + this.$router.history.current.path.replace(/\//g,'')
+    }
     
   },
   beforeDestroy() {
